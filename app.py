@@ -47,7 +47,7 @@ days_since_last_financing = (today_date - last_financing_date).days
 total_raised = st.number_input('Total Raised (in millions USD)', min_value=0.0, format="%.2f")
 last_financing_size = st.number_input('Last Financing Size (in millions USD)', min_value=0.0, format="%.2f")
 competitor_count = st.number_input('Number of Competitors', min_value=0)
-ownership_status_acquired_merged = st.selectbox('Was the startup previously acquired or merged? (0 = No, 1 = Yes)', [0, 1])
+second_most_recent_employment_year = st.number_input('How many employees did the startup have 2 years ago?', min_value=0)
 most_recent_employment_year = st.number_input('How many employees did the startup have 1 year ago?', min_value=0)
 number_of_employees = st.number_input('What is the current number of employees?', min_value=0)
 third_most_recent_employment_year = st.number_input('How many employees did the startup have 3 years ago?', min_value=0)
@@ -59,7 +59,7 @@ input_data = {
     'Total Raised': total_raised,
     'Last Financing Size': last_financing_size,
     'Competitor Count': competitor_count,
-    'Ownership Status_Acquired/Merged (Operating Subsidiary)': ownership_status_acquired_merged,
+    'Second Most Recent Employment Year': second_most_recent_employment_year,
     'Days Since Last Financing': days_since_last_financing,
     'Most Recent Employment Year': most_recent_employment_year,
     '# Employees': number_of_employees,
@@ -78,8 +78,6 @@ if st.button('Predict'):
         st.header(f'The model predicts the company WILL NOT raise at a later stage or M&A with {round(prediction_proba[0][0],2)*100}% confidence')
     else:
         st.header(f'The model predicts the company WILL raise at a later stage or M&A with {round(prediction_proba[0][1],2)*100}% confidence')
-    #st.write(f'Prediction: {prediction[0]}')
-    #st.write(f'Probability of each class: {prediction_proba[0]}')
 
 # Optional: Display the input data for confirmation
 st.write('Input Data:')
