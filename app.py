@@ -17,7 +17,7 @@ st.markdown(
 )
 
 # Step 1: Load the saved Random Forest model and feature names
-model = joblib.load('random_forest_model.pkl ')
+model = joblib.load('random_forest_model.pkl')
 feature_names = model.feature_names_in_  # Assuming you have this attribute stored or saved separately
 
 # Step 2: Create a function to take user input and make predictions
