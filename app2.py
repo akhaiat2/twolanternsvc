@@ -17,7 +17,7 @@ st.markdown(
 )
 
 # Step 1: Load the saved Random Forest model and feature names
-model = joblib.load('logistic_regression_model.pkl')
+model = joblib.load('random_forest_model.pkl')
 feature_names = model.feature_names_in_  # Assuming you have this attribute stored or saved separately
 
 # Step 2: Create a function to take user input and make predictions
@@ -33,29 +33,37 @@ st.title('Predict whether a startup will M&A or raise Post-Seed')
 st.header('By Anthony Khaiat')
 
 # User input for the features
-business_age_category_within_ten_years = st.number_input('Was the Business founded 5-10 years ago', min_value=0)
-company_financing_formerly_vc_backed = st.number_input('Does the company have previous VC funding?', min_value=0)
-is_in_new_york = st.number_input('Is the company based in New York City?', min_value=0)
-is_in_software = st.number_input('Does the company develop software applications?', min_value=0)
-is_in_san_francisco = st.number_input('Is the company based in San Francisco?', min_value=0)
-is_in_everleigh = st.number_input('Is the company based in Everleigh?', min_value=0)
-is_in_framingham = st.number_input('Is the company based in Framingham, MA?', min_value=0)
-is_in_haifa = st.number_input('Is the company based in Haifa?', min_value=0)
-is_in_devices = st.number_input('Does the company develop devices or electrical equipment?', min_value=0)
-is_in_santa_clara = st.number_input('Is the company based in Santa Clara?', min_value=0)
+years_in_business = st.number_input('Years in Business', min_value=0)
+
+# Use st.date_input to take a date input from the user
+first_financing_date = st.date_input('First Financing Date')
+today_date = datetime.today().date()
+days_since_first_financing = (today_date - first_financing_date).days
+
+# Use st.date_input for the last financing date and calculate days since last financing
+last_financing_date = st.date_input('Last Financing Date')
+days_since_last_financing = (today_date - last_financing_date).days
+
+total_raised = st.number_input('Total Raised (in millions USD)', min_value=0.0, format="%.2f")
+last_financing_size = st.number_input('Last Financing Size (in millions USD)', min_value=0.0, format="%.2f")
+competitor_count = st.number_input('Number of Competitors', min_value=0)
+second_most_recent_employment_year = st.number_input('How many employees did the startup have 2 years ago?', min_value=0)
+most_recent_employment_year = st.number_input('How many employees did the startup have 1 year ago?', min_value=0)
+number_of_employees = st.number_input('What is the current number of employees?', min_value=0)
+third_most_recent_employment_year = st.number_input('How many employees did the startup have 3 years ago?', min_value=0)
 
 # Combine user input into a single DataFrame
 input_data = {
-    'Business Age Category_Within 10 years': business_age_category_within_ten_years,
-    'Company Financing Status_Formerly VC-backed': company_financing_formerly_vc_backed,
-    'HQ City_New York': is_in_new_york,
-    'Primary Industry Code_Software Development Applications': is_in_software,
-    'HQ City_San Francisco': is_in_san_francisco,
-    'HQ City_Everleigh': is_in_everleigh,
-    'HQ City_Framingham': is_in_framingham,
-    'HQ City_Haifa': is_in_haifa,
-    'Primary Industry Code_Other Devices and Supplies': is_in_devices,
-    'HQ City_Santa Clara': is_in_santa_clara
+    'Years in Business': years_in_business,
+    'Days Since First Financing': days_since_first_financing,
+    'Total Raised': total_raised,
+    'Last Financing Size': last_financing_size,
+    'Competitor Count': competitor_count,
+    'Second Most Recent Employment Year': second_most_recent_employment_year,
+    'Days Since Last Financing': days_since_last_financing,
+    'Most Recent Employment Year': most_recent_employment_year,
+    '# Employees': number_of_employees,
+    'Third Most Recent Employment Year': third_most_recent_employment_year
 }
 
 input_df = pd.DataFrame(input_data, index=[0])
