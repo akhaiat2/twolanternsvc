@@ -32,7 +32,7 @@ st.title('Predict whether a startup will M&A or raise Post-Seed')
 st.header('By Anthony Khaiat')
 
 # User input for the top 20 features
-business_age_category_within_ten_years = st.selectbox('Was the business founded within the last 10 years?', options=[0, 1])
+business_age_category_within_ten_years = st.selectbox('Has the business been operating for over 7 years?', options=[0, 1])
 company_financing_formerly_vc_backed = st.selectbox('Is the company formerly VC-backed?', options=[0, 1])
 hq_city_new_york = st.selectbox('Is the company based in New York?', options=[0, 1])
 primary_industry_software_development = st.selectbox('Is the primary industry software development?', options=[0, 1])
