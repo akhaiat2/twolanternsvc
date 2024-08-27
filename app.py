@@ -35,23 +35,23 @@ st.header('By Anthony Khaiat')
 business_age_category_within_ten_years = st.selectbox('Has the business been operating for over 7 years?', options=[0, 1])
 company_financing_formerly_vc_backed = st.selectbox('Is the company formerly VC-backed?', options=[0, 1])
 hq_city_new_york = st.selectbox('Is the company based in New York?', options=[0, 1])
-primary_industry_software_development = st.selectbox('Is the primary industry software development?', options=[0, 1])
+primary_industry_software_development = st.selectbox('Is the startup developing software?', options=[0, 1])
 hq_city_san_francisco = st.selectbox('Is the company based in San Francisco?', options=[0, 1])
 most_recent_employment_year = st.number_input('How many employees did the startup have last year?', min_value=0)
-hq_city_framingham = st.selectbox('Is the company based in Framingham?', options=[0, 1])
-hq_city_everleigh = st.selectbox('Is the company based in Everleigh?', options=[0, 1])
-primary_industry_apparel_accessories = st.selectbox('Is the primary industry apparel and accessories?', options=[0, 1])
-primary_industry_clothing = st.selectbox('Is the primary industry clothing?', options=[0, 1])
-primary_industry_other_devices_supplies = st.selectbox('Is the primary industry other devices and supplies?', options=[0, 1])
+primary_industry_apparel_accessories = st.selectbox('Is the startup in the apparel and accessories industry?', options=[0, 1])
+primary_industry_clothing = st.selectbox('Is the startup in the clothing industry?', options=[0, 1])
 company_financing_formerly_angel_backed = st.selectbox('Is the company formerly angel-backed?', options=[0, 1])
-primary_industry_commercial_services = st.selectbox('Is the primary industry commercial services?', options=[0, 1])
+primary_industry_commercial_services = st.selectbox('Is the startup in the commercial services industry?', options=[0, 1])
 hq_city_haifa = st.selectbox('Is the company based in Haifa?', options=[0, 1])
-hq_city_santa_clara = st.selectbox('Is the company based in Santa Clara?', options=[0, 1])
-primary_industry_human_capital_services = st.selectbox('Is the primary industry human capital services?', options=[0, 1])
-hq_city_saskatoon = st.selectbox('Is the company based in Saskatoon?', options=[0, 1])
-hq_city_saint_louis = st.selectbox('Is the company based in Saint Louis?', options=[0, 1])
-primary_industry_electronic_equipment_instruments = st.selectbox('Is the primary industry electronic equipment and instruments?', options=[0, 1])
-hq_city_buffalo = st.selectbox('Is the company based in Buffalo?', options=[0, 1])
+primary_industry_human_capital_services = st.selectbox('Is the startup in the human capital services industry?', options=[0, 1])
+years_in_business = st.number_input('How many years has the startup been in business?', min_value=0)
+primary_industry_B_Two_B = st.selectbox('Is the startup B2B?', options=[0, 1])
+primary_industry_business_productivity_software = st.selectbox('Is the startup building a business/productivity software?', options=[0, 1])
+primary_industry_automation_workflow_software = st.selectbox('Is the startup building an automation workflow software?', options=[0, 1])
+primary_industry_specialized_finance = st.selectbox('Is the startup in the specialized finance industry?', options=[0, 1])
+primary_industry_non_finance_B_Two_C = st.selectbox('Is the startup is a non-finance B2C?', options=[0, 1])
+primary_industry_logistics = st.selectbox('Is the startup in the logistics industry?', options=[0, 1])
+primary_industry_retail = st.selectbox('Is the startup in the retail industry?', options=[0, 1])
 
 # Combine user input into a single DataFrame
 input_data = {
@@ -61,20 +61,20 @@ input_data = {
     'Primary Industry Code_Software Development Applications': primary_industry_software_development,
     'HQ City_San Francisco': hq_city_san_francisco,
     'Most Recent Employment Year': most_recent_employment_year,
-    'HQ City_Framingham': hq_city_framingham,
-    'HQ City_Everleigh': hq_city_everleigh,
     'Primary Industry Group_Apparel and Accessories': primary_industry_apparel_accessories,
     'Primary Industry Code_Clothing': primary_industry_clothing,
-    'Primary Industry Code_Other Devices and Supplies': primary_industry_other_devices_supplies,
     'Company Financing Status_Formerly Angel backed': company_financing_formerly_angel_backed,
     'Primary Industry Group_Commercial Services': primary_industry_commercial_services,
     'HQ City_Haifa': hq_city_haifa,
-    'HQ City_Santa Clara': hq_city_santa_clara,
     'Primary Industry Code_Human Capital Services': primary_industry_human_capital_services,
-    'HQ City_Saskatoon': hq_city_saskatoon,
-    'HQ City_Saint Louis': hq_city_saint_louis,
-    'Primary Industry Code_Electronic Equipment and Instruments': primary_industry_electronic_equipment_instruments,
-    'HQ City_Buffalo': hq_city_buffalo
+    'Years in Business': years_in_business,
+    'Primary Industry Code_Media and Information Services (B2B)': primary_industry_B_Two_B,
+    'Primary Industry Code_Business/Productivity Software': primary_industry_business_productivity_software,
+    'Primary Industry Code_Automation/Workflow Software': primary_industry_automation_workflow_software,
+    'Primary Industry Code_Specialized Finance': primary_industry_specialized_finance,
+    'Primary Industry Code_Other Services (B2C Non-Financial)': primary_industry_non_finance_B_Two_C,
+    'Primary Industry Code_Logistics': primary_industry_logistics,
+    'Primary Industry Code_Internet Retail': primary_industry_retail
 }
 
 input_df = pd.DataFrame(input_data, index=[0])
